@@ -5,6 +5,9 @@
  * Date: 22/02/2019
  * Time: 20:51
  */
+    if (isset($_POST['username'], $_POST['message'])){
+
+    }
     $title = "Livre d'or";
     require_once 'template/header.php';
  ?>
@@ -21,7 +24,10 @@
                 </div>
                 <div class="col-lg-12 mt-3">
                     <!-- First name -->
-                    <textarea name="message" cols="7" rows="4" class="form-control" placeholder="votre message"></textarea>
+                    <textarea name="message" rows="3" class="form-control" placeholder="votre message"></textarea>
+                </div>
+                <div class="text-left">
+                    <button type="submit" class="btn btn-primary rounded">Send <i class="fa fa-send"></i></button>
                 </div>
             </div>
         </form>
