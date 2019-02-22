@@ -6,12 +6,17 @@
  * Time: 20:51
  */
     require_once 'class/Message.php';
+    require_once 'class/GuestBook.php';
     /** @var TYPE_NAME $error */
     $error = null;
+    $success = false;
     if (isset($_POST['username'], $_POST['message'])){
         $message = new  Message($_POST['username'], $_POST['message']);
         if ($message->isValid()){
-
+            $guestbook = new  GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'messagess');
+            $guestbook->addMessage($message);
+            $success = true;
+            $_POST = [];
         } else {
             $error = $message->getErrors();
         }
@@ -30,7 +35,13 @@
             <?php if (!empty($error)): ?>
                 <div class="alert alert-danger">
                     Formulaire invalide
-        </div>
+                </div>
+            <?php endif ?>
+
+            <?php if ($success): ?>
+                <div class="alert alert-success">
+                    Merci d'avoir poster votre message
+                </div>
             <?php endif ?>
         </div>
         <form class="text-center border border-light p-5" action="" method="post">
