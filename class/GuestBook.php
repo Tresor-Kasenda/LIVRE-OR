@@ -27,4 +27,16 @@
            file_put_contents($this->files, $message->toJson() . PHP_EOL, FILE_APPEND);
 
        }
+
+       public  function  getMessages(): array  {
+
+           $content = trim(file_get_contents($this->files));
+           $lines = explode(PHP_EOL, $content);
+           $messages = [];
+           foreach ($lines as $line){
+               $messages[] = Message::fromJson($line);
+           }
+
+           return array_reverse($messages);
+       }
    }

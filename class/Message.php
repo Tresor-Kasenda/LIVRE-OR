@@ -14,6 +14,12 @@
         private  $message;
         private  $date;
 
+        public  static  function  fromJson(string  $json): Message {
+
+            $data = json_decode($json, true);
+            return new  self($data['username'], $data['message'], new  DateTime("@". $data['date']));
+        }
+
         public function  __construct(string $username, string $message, ?DateTime $date = null){
             $this->username = $username;
             $this->message = $message;
@@ -39,6 +45,28 @@
                 $errors['message'] = "Votre message est trop court";
             }
             return $errors;
+        }
+
+        /**
+         * @return string
+         */
+        public  function  toHTML(): string  {
+            $username = htmlentities($this->username);
+            $date = $this->date->format('d/m/y a H:i');
+            /** @var TYPE_NAME $message */
+            $message = htmlentities($this->message);
+            /** @var TYPE_NAME $username */
+            return " <div class='card indigo lighten-5'>
+                        <div class='card-header'>
+                            <h5 class='font-weight-bold'><i class='fa fa-user'></i> {$username}</h5>
+                        </div>
+                        <div class='card-body  rounded-bottom'>
+                            <h5>{$message}</h5>
+                        </div>
+                        <div class='card-footer text-right'>
+                            <em><i class='fa fa-dashcube'></i> le {$date}</em>
+                        </div>
+                    </div><br>";
         }
 
         public  function  toJson(): string  {
