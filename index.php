@@ -13,7 +13,7 @@
         if ($message->isValid()){
 
         } else {
-            $error = 'Formulaire invalide';
+            $error = $message->getErrors();
         }
 
     }
@@ -27,21 +27,31 @@
         <hr>
         <!-- Default form register -->
         <div class="mt-2">
-            <?php if ($error): ?>
+            <?php if (!empty($error)): ?>
                 <div class="alert alert-danger">
-                    <?= $error ?>
-                </div>
+                    Formulaire invalide
+        </div>
             <?php endif ?>
         </div>
         <form class="text-center border border-light p-5" action="" method="post">
             <div class="form-row mb-4">
                 <div class="col-lg-12">
                     <!-- First name -->
-                    <input type="text" name="username" class="form-control" placeholder="First name">
+                    <input type="text" value="<?= htmlentities($_POST['username'] ?? '') ?>" name="username" class="form-control <?php isset($error['username']) ? 'is-invalid' : '' ?>" placeholder="First name">
+                    <?php if (isset($error['username'])): ?>
+                        <div class="alert alert-warning mt-1">
+                            <?= $error['username'] ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="col-lg-12 mt-3">
                     <!-- First name -->
-                    <textarea name="message" rows="3" class="form-control" placeholder="votre message"></textarea>
+                    <textarea name="message"  rows="2" class="form-control <?php isset($error['message']) ? 'is-invalid' : '' ?>" placeholder="votre message"><?= htmlentities($_POST['message'] ?? '') ?></textarea>
+                    <?php if (isset($error['message'])): ?>
+                        <div class="alert alert-warning mt-1 ">
+                            <?= $error['message'] ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="text-left">
                     <button type="submit" class="btn btn-primary rounded">Send <i class="fa fa-send"></i></button>

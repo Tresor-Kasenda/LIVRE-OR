@@ -8,12 +8,12 @@
          * @param string $message
          * @param DateTime|null $date
          */
-
+        const  LIMIT_USERNAME = 3;
+        const  LIMIT_MESSAGE = 10;
         private  $username;
         private  $message;
 
         public function  __construct(string $username, string $message, ?DateTime $date = null){
-
             $this->username = $username;
             $this->message = $message;
         }
@@ -22,19 +22,21 @@
          * @return bool
          */
         public  function  isValid(): bool {
-            return strlen($this->username) >=3 && strlen($this->message) >=15 ;
+            return empty($this->getErrors());
         }
 
+        /**
+         * @return array
+         */
         public  function  getErrors(): array {
             $errors =  [];
-            if (strlen($this->username)  < 3){
+            if (strlen($this->username)  < self::LIMIT_USERNAME){
                 $errors['username'] = "Votre nom est trop court";
             }
-            if (strlen($this->message) < 10){
+            if (strlen($this->message) < self::LIMIT_MESSAGE){
                 $errors['message'] = "Votre message est trop court";
             }
+            return $errors;
         }
-
-
 
     }
