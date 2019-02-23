@@ -27,13 +27,12 @@
     require_once 'template/header.php';
  ?>
 
-    <div class="container mt-3">
+    <div class="container" style="margin-top: 5%;">
         <div class="row">
             <div class="col-lg-5 col-md-5">
                 <?php if (!empty($messages)): ?>
                     <h2 class="mt-2 text-center">Messages</h2>
                     <hr>
-
                     <?php foreach ($messages as $message): ?>
                         <?= $message->toHTML() ?>
                     <?php endforeach ?>
