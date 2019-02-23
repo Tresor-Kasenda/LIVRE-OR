@@ -14,12 +14,24 @@
         private  $message;
         private  $date;
 
+        /**
+         * @param string $json
+         * @return Message
+         * @throws Exception
+         */
         public  static  function  fromJson(string  $json): Message {
 
             $data = json_decode($json, true);
             return new  self($data['username'], $data['message'], new  DateTime("@". $data['date']));
         }
 
+        /**
+         * Message constructor.
+         * @param string $username
+         * @param string $message
+         * @param DateTime|null $date
+         * @throws Exception
+         */
         public function  __construct(string $username, string $message, ?DateTime $date = null){
             $this->username = $username;
             $this->message = $message;
@@ -56,12 +68,12 @@
             /** @var TYPE_NAME $message */
             $message = htmlentities($this->message);
             /** @var TYPE_NAME $username */
-            return " <div class='card indigo lighten-5'>
+            return " <div class='card card-info'>
                         <div class='card-header'>
-                            <h5 class='font-weight-bold'><i class='fa fa-user'></i> {$username}</h5>
+                            <h5 class='font-weight-bold card-title'><i class='fa fa-user'></i> {$username}</h5>
                         </div>
-                        <div class='card-body  rounded-bottom'>
-                            <h5>{$message}</h5>
+                        <div class='card-body rounded-bottom'>
+                            <p>{$message}</p>
                         </div>
                         <div class='card-footer text-right'>
                             <em><i class='fa fa-dashcube'></i> le {$date}</em>
@@ -69,8 +81,10 @@
                     </div><br>";
         }
 
+        /**
+         * @return string
+         */
         public  function  toJson(): string  {
-
             return json_encode([
                 'username' => $this->username,
                 'message' => $this->message,
