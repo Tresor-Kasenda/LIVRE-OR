@@ -1,22 +1,25 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $title ?? 'Mon site' ?></title>
+    <title>
+        <?= $title ?? 'Mon site' ?>
+    </title>
+    <link rel="stylesheet" href="./asset/fontawesome/css/fontawesome.css">
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/mdb.css">
-    <link rel="stylesheet" href="./asset/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./asset/css/style.css">
 </head>
+
 <body>
 
     <!--Navbar -->
     <nav class="mb-1 navbar navbar-expand-lg scrolling-navbar fixed-top navbar-dark info-color">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-                aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Livre d'or</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
@@ -24,25 +27,13 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         <i class="fa fa-home"></i> Accueil
-                        <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="fa fa-instagram"></i> Instagram</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">
-                        <i class="fa fa-user"></i> Profile </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                        <a class="dropdown-item" href="#">My account</a>
-                        <a class="dropdown-item" href="#">Log out</a>
-                    </div>
-                </li>
             </ul>
         </div>
     </nav>
-    <!--/.Navbar -->
-
-
+    <!--/.Navbar --> 

@@ -30,13 +30,17 @@ require_once 'template/header.php';
 <div class="container" style="margin-top: 5%;">
     <div class="row">
         <div class="col-lg-5 col-md-5">
-            <?php if (!empty($messages)) : ?>
             <h2 class="mt-2 text-center">Messages</h2>
             <hr>
-            <?php foreach ($messages as $message) : ?>
-            <?= $message->toHTML() ?>
-            <?php endforeach ?>
-            <?php endif; ?>
+            <div class="card example-1 scrollbar-ripe-malinka" style="height: 440px;">
+                <div class="card-body">
+                    <?php if (!empty($messages)) : ?>
+                    <?php foreach ($messages as $message) : ?>
+                    <?= $message->toHTML() ?>
+                    <?php endforeach ?>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
         <div class="col-lg-7 col-md-7">
             <h2 class="text-center text-uppercase">Livre d'or</h2>
@@ -48,10 +52,9 @@ require_once 'template/header.php';
                     Formulaire invalide
                 </div>
                 <?php endif ?>
-
                 <?php if ($success) : ?>
                 <div class="alert alert-success">
-                    Merci d'avoir poster votre message
+                    votre message est poster.
                 </div>
                 <?php endif ?>
             </div>
