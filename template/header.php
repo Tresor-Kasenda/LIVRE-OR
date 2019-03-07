@@ -13,7 +13,7 @@
 <body>
 
     <!--Navbar -->
-    <nav class="mb-1 navbar navbar-expand-lg fixed-top navbar-dark info-color">
+    <nav class="mb-1 navbar navbar-expand-lg scrolling-navbar fixed-top navbar-dark info-color">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
                 aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
